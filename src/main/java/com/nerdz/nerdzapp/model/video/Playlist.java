@@ -53,6 +53,13 @@ public class Playlist implements Serializable {
         this.videos = new TreeSet<>(); // todo: implement comaprable in video
     }
 
+    public void addVideo(Video video) {
+        if (video != null) {
+            videos.add(video);
+            video.addToPlaylists(this);
+        }
+    }
+
     public Long getId() {
         return id;
     }

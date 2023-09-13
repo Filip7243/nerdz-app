@@ -17,7 +17,7 @@ import static jakarta.persistence.TemporalType.TIMESTAMP;
 
 @Entity(name = "channel")
 @Table(name = "channel")
-public class Channel implements Serializable {
+public class Channel implements Serializable, UserEngagement {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
@@ -83,13 +83,6 @@ public class Channel implements Serializable {
         if (playlist != null) {
             playlists.add(playlist);
             playlist.setChannel(this);
-        }
-    }
-
-    public void addComment(Comment comment) {
-        if (comment != null) {
-            comments.add(comment);
-            comment.setCommenter(this);
         }
     }
 

@@ -43,6 +43,12 @@ public class Category implements Serializable {
         this.videos = new ArrayList<>();
     }
 
+    void addVideo(Video video) {
+        if (video != null) {
+            videos.add(video);
+        }
+    }
+
     public Long getId() {
         return id;
     }

@@ -36,9 +36,8 @@ public class Thumbnail implements Serializable {
     public Thumbnail() {
     }
 
-    public Thumbnail(byte[] image, Video video) {
+    public Thumbnail(byte[] image) {
         this.image = image;
-        this.video = video;
     }
 
     public Long getId() {

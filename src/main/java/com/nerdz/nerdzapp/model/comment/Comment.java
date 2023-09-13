@@ -82,6 +82,12 @@ public class Comment implements Serializable {
         return video;
     }
 
+    public void setVideo(Video video) {
+        if (video != null) {
+            this.video = video;
+        }
+    }
+
     public List<Comment> getReplies() {
         return List.copyOf(replies);
     }

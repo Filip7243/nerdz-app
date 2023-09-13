@@ -69,6 +69,19 @@ public class Video implements Serializable, Comparable<Video> {
         this.playlists = new HashSet<>();
     }
 
+    void addToPlaylists(Playlist playlist) {
+        if (playlist != null) {
+            playlists.add(playlist);
+        }
+    }
+
+    public void addCategory(Category category) {
+        if (category != null) {
+            categories.add(category);
+            category.addVideo(this);
+        }
+    }
+
     public Long getId() {
         return id;
     }
@@ -113,8 +126,10 @@ public class Video implements Serializable, Comparable<Video> {
     }
 
     public void setThumbnail(Thumbnail thumbnail) {
-        if (thumbnail != null) this.thumbnail = thumbnail;
-        else throw new IllegalArgumentException("Bad thumbnail!");
+        if (thumbnail != null) {
+            this.thumbnail = thumbnail;
+            thumbnail.setVideo(this);
+        } else throw new IllegalArgumentException("Bad thumbnail!");
     }
 
     public String getVideoUrl() {
