@@ -24,7 +24,7 @@ public class Channel implements Serializable, UserEngagement {
     private Long id;
     private String name;
 
-    @OneToOne(fetch = LAZY, optional = false, orphanRemoval = true)
+    @OneToOne(fetch = LAZY, optional = false, orphanRemoval = true, cascade = CascadeType.PERSIST)
     private AppUser owner;
     @OneToMany
     @JoinTable(
@@ -54,9 +54,9 @@ public class Channel implements Serializable, UserEngagement {
     }
 
     // when user is creating, channel is created automatically, there is no user without channel
-    public Channel(String name, AppUser owner) {
+    public Channel(String email, String password, String name) {
         this.name = name;
-        this.owner = owner;
+        this.owner = new AppUser(email, password);
 
         this.subscribers = new HashSet<>();
         this.videos = new ArrayList<>();
